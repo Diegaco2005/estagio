@@ -11,4 +11,5 @@ package model;
  */
 public class Aluno {
     private int id;
+    private String teste;
 }
