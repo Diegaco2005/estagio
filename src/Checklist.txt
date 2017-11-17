@@ -1,1 +1,31 @@
+ ---- Model ----
+
+-aluno
+-empresa
+-estagio
+
+
+----   telas   ------
+
+-principal
+    
+
+-crud aluno
+    -add
+    -modif
+    -del
+    -imagem
+ -imagem nome_prefixo A
+-crud empresa
+    -add
+    -modif
+    -del
+    -imagem nome_prefixo E
+-crud etagio
+    -add
+    -modif
+    -del
+    
+-telagrafico
+
 
