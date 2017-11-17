@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="34.0" layoutY="54.0" text="Nome" />
+      <Label layoutX="39.0" layoutY="94.0" text="CPF" />
+      <Label layoutX="37.0" layoutY="125.0" text="Sexo" />
+      <Label layoutX="34.0" layoutY="153.0" text="Curso" />
+      <Label layoutX="35.0" layoutY="183.0" text="Email" />
+      <Label layoutX="33.0" layoutY="213.0" text="Avatar" />
+      <TextField layoutX="110.0" layoutY="51.0" />
+      <TextField layoutX="110.0" layoutY="90.0" />
+      <TextField layoutX="110.0" layoutY="180.0" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="110.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+      <ComboBox fx:id="cbSexo" layoutX="110.0" layoutY="123.0" prefWidth="150.0" />
+      <ComboBox fx:id="cbCurso" layoutX="110.0" layoutY="151.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
