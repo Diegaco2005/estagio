@@ -29,6 +29,7 @@ public class Aluno {
     private String email;
     
     private String Diego;
+    private String caio;
 
     /**
      * @return the id
