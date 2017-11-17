@@ -1,0 +1,37 @@
+Atividade Avaliada 
+O IFRS está formando um novo grupo de trabalho chamado Coordenação de Relações Empresariais (CORE), cuja principal função é gerir os estágios dos alunos da instituição. 
+Durante sua vida acadêmica, o aluno pode realizar estágios em várias empresas, em períodos distintos. Por outro lado, a empresa pode ter vários estudantes do IFRS realizando estágios em um mesmo período.
+Deste modo, surge a necessidade de gerenciar o histórico de estagiários de todas as empresas parceiras do IFRS a fim de comprovação junto ao IFRS e aos cursos.
+Logo, necessita-se gerenciar:
+Um aluno pode realizar vários estágios durante o curso
+O CORE deve ter controle sobre o início do estágio, o fim do estágio, o aluno que realizou este estágio e dados da empresa ontem o estágio foi realizado.
+Aluno tem:
+Id
+Nome
+CPF
+Sexo
+Curso
+Avatar (imagem)
+Email
+Empresa tem:
+Id
+Nome
+Logo (imagem)
+Cidade
+País
+Endereço
+Funcionalidades:
+CRUD de alunos
+CRUD de empresas
+CRUD de Estágios, ou seja, será possível relacionar as empresas com os alunos, listar todos os estágios, atualizar períodos de estágios e remover estágios cadastrados. Remover estágios não deve excluir empresas nem alunos da base de dados.
+Gerar gráficos de quantos alunos de um curso concluíram o estágio e quantos tem com estágio em andamento, por semestre.
+
+Observações
+Percebe-se claramente que o relacionamento entre empresas e alunos é n:n. Logo, no SGBD é preciso criar uma tabela intermediária (Ex: Estágio). Nesta tabela, há a chave estrangeira para aluno, a chave estrangeira para empresa, a data de início do estágio e a data de fim do estágio.
+Além disso, na parte lógica da aplicação (código JAVA) se faz necessário a criação de uma classe associativa (ex: Estágio) onde há o aluno, a empresa, data início e data de fim. Lembrando que os relacionamentos na camada lógica referem-se a objetos, ou seja, nesta classe há todo um objeto de aluno, todo um objeto de empresa.
+Você deve ter uma imagem padrão tanto para empresas como para alunos que não tenham fotos/logos.
+Você está livre para definir o layout das telas, entretanto a tela deve conter uma barra de menus.
+Esta atividade deve ser feita individualmente.
+Entregar o projeto juntamente com um backup do banco de dados.
+Você receberá uma base de dados para testes.
+Cópias, se identificadas, nota zero para os envolvidos.
