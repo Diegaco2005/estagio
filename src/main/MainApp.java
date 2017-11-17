@@ -1,5 +1,7 @@
 package main;
 
+
+
 import java.io.IOException;
 import java.sql.SQLException;
 import javafx.application.Application;
@@ -33,7 +35,7 @@ public class MainApp extends Application {
     public void initRootLayout() {
         try {
             // Carrega o root layout do arquivo fxml.
-            Parent root = FXMLLoader.load(getClass().getResource("../view/RootLayout.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/view/RootLayout.fxml"));
            
 
             // Mostra a scene (cena) contendo o root layout.
