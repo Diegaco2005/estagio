@@ -20,7 +20,7 @@ public class Aluno extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("CRUDAluno.fxml"));
-        
+        //Diego teste
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
