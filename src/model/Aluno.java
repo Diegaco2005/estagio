@@ -10,5 +10,5 @@ package model;
  * @author 05220068
  */
 public class Aluno {
-    
+    private int id;
 }
