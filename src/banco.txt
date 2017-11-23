@@ -1,0 +1,5 @@
+192.168.2.19:3306
+200.132.7.1:1080
+banco   Diego
+usuário Diego
+senha   Diego
