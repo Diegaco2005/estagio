@@ -4,9 +4,8 @@ import main.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 
-public class RootLayoutController {
-	@FXML
-	private MenuItem MIempresa;
+public class ViewPrincipalController {
+
 
 
 	 // Reference to the main application.
@@ -14,12 +13,14 @@ public class RootLayoutController {
 
 	@FXML
     private void initialize(){}
-	public RootLayoutController(){}
+	public ViewPrincipalController(){}
 	public void setMainApp(MainApp mainApp) {
+		System.out.println(mainApp.getClass());
         this.mainApp = mainApp;
     }
 	@FXML
 	private void handleAlunoMenuItem(){
 		System.out.println("test");
+		 boolean okClicked = mainApp.showViewAlunoDialog();
 	}
 }
