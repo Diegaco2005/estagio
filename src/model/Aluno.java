@@ -28,9 +28,7 @@ public class Aluno {
     private String imagem;
     private String email;
     private String Diego;
-
-
-    private String caio2;
+    private String caio;
 
     /**
      * @return the id
