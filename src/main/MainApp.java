@@ -16,6 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Aluno;
 import view.ViewPrincipalController;
+import view.ViewAddEditAlunoController;
 import view.ViewAlunoController;
 
 
@@ -79,6 +80,37 @@ public class MainApp extends Application {
 
             // Define a pessoa no controller.
             ViewAlunoController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setMainApp(this);
+            //controller.setAluno(aluno);
+
+            // Mostra a janela e espera até o usuário fechar.
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+
+    	}catch(IOException e) {
+            e.printStackTrace();
+            return false;
+    	}
+    }
+    public boolean showAddEditAlunoDialog(Aluno aluno){
+    	try{
+    		// Carrega o arquivo fxml e cria um novo stage para a janela popup
+    		FXMLLoader loader = new FXMLLoader();
+    		loader.setLocation(MainApp.class.getResource("/view/AddEditAluno.fxml"));
+    		AnchorPane page = (AnchorPane) loader.load();
+
+    		// Cria o palco dialogStage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Cadastra Aluno");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Define a pessoa no controller.
+            ViewAddEditAlunoController controller = loader.getController();
             controller.setDialogStage(dialogStage);
 
             //controller.setAluno(aluno);
