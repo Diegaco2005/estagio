@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 
 public class MainApp extends Application {
-    
+
     private Stage primaryStage;
     private AnchorPane rootLayout;
 
@@ -36,7 +36,7 @@ public class MainApp extends Application {
         try {
             // Carrega o root layout do arquivo fxml.
             Parent root = FXMLLoader.load(getClass().getResource("/view/RootLayout.fxml"));
-           
+
 
             // Mostra a scene (cena) contendo o root layout.
             Scene scene = new Scene(root);
@@ -46,7 +46,7 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-  
+
 
     /**
      * Retorna o palco principal.

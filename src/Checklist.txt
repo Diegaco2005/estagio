@@ -1,14 +1,14 @@
  ---- Model ----
 
--aluno
--empresa
--estagio
+*aluno
+*empresa
+*estagio
 
 
 ----   telas   ------
 
 -principal
-    
+
 
 -crud aluno
     -add
@@ -25,7 +25,7 @@
     -add
     -modif
     -del
-    
+
 -telagrafico
 
 

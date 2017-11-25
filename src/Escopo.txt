@@ -1,6 +1,9 @@
 Atividade Avaliada 
-O IFRS está formando um novo grupo de trabalho chamado Coordenação de Relações Empresariais (CORE), cuja principal função é gerir os estágios dos alunos da instituição. 
-Durante sua vida acadêmica, o aluno pode realizar estágios em várias empresas, em períodos distintos. Por outro lado, a empresa pode ter vários estudantes do IFRS realizando estágios em um mesmo período.
+O IFRS está formando um novo grupo de trabalho chamado Coordenação de Relações Empresariais (CORE), 
+cuja principal função é gerir os estágios dos alunos da instituição. 
+
+Durante sua vida acadêmica, o aluno pode realizar estágios em várias empresas, em períodos distintos. 
+Por outro lado, a empresa pode ter vários estudantes do IFRS realizando estágios em um mesmo período.
 Deste modo, surge a necessidade de gerenciar o histórico de estagiários de todas as empresas parceiras do IFRS a fim de comprovação junto ao IFRS e aos cursos.
 Logo, necessita-se gerenciar:
 Um aluno pode realizar vários estágios durante o curso

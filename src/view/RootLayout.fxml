@@ -5,6 +5,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="view.RootLayoutController">
   <!-- TODO Add Nodes -->
+  <top>
+    <MenuBar>
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Alunos" />
+            <MenuItem disable="true" mnemonicParsing="false" text="Empresas" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit" />
+      </menus>
+    </MenuBar>
+  </top>
 </BorderPane>
