@@ -8,8 +8,8 @@ package model;
 /**
  *
  * @author 05220068
- * 
- * 
+ *
+ *
   `id` int(11) NOT NULL,
   `cpf` varchar(11) NOT NULL,
   `nome` varchar(100) DEFAULT NULL,
@@ -27,9 +27,10 @@ public class Aluno {
     private Boolean sexo;
     private String imagem;
     private String email;
-    
     private String Diego;
-    private String caio;
+
+
+    private String caio2;
 
     /**
      * @return the id
@@ -128,6 +129,6 @@ public class Aluno {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
+
+
 }
