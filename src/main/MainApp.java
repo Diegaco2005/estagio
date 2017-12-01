@@ -56,7 +56,6 @@ public class MainApp extends Application {
             // Define o person overview dentro do root layout.
             rootLayout.setCenter(principalView);
 
-            // Dá ao controlador acesso à the main app.
             ViewPrincipalController controller = loader.getController();
             controller.setMainApp(this);
         } catch (IOException e) {
@@ -84,7 +83,7 @@ public class MainApp extends Application {
             controller.setMainApp(this);
 
 
-            // Mostra a janela e espera até o usuário fechar.
+            // Mostra a janela e espera atï¿½ o usuï¿½rio fechar.
             dialogStage.showAndWait();
 
             return controller.isOkClicked();
@@ -114,7 +113,7 @@ public class MainApp extends Application {
             controller.setDialogStage(dialogStage);
             controller.setAluno(aluno);
 
-            // Mostra a janela e espera até o usuário fechar.
+            // Mostra a janela e espera atï¿½ o usuï¿½rio fechar.
             dialogStage.showAndWait();
 
             return controller.isOkClicked();

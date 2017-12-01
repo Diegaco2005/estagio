@@ -34,7 +34,7 @@ public class ViewAlunoController {
 		Boolean okClicked = mainApp.showAddEditAlunoDialog(alunoTmp);
 		if(okClicked){
 			AlunoDao alunodao = new AlunoDao();
-			//alunodao.adiciona(aluno);
+			alunodao.adiciona(aluno);
 		}
 	}
 	@FXML

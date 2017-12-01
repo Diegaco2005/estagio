@@ -46,10 +46,10 @@ public class ViewAddEditAlunoController {
 	@FXML
 	public void initialize() {
 		ObservableList<String> sexo = FXCollections.observableArrayList(
-				"Masculinho", "Feminino");
+				"Masculino", "Feminino");
 		sexoBox.getItems().addAll(sexo);
 		ObservableList<String> curso = FXCollections.observableArrayList(
-				"Análise e Desenvolvimento de Sistemas", "Economia");
+				"Analise e Desenvolvimento de Sistemas", "Economia");
 		cursoBox.getItems().addAll(curso);
 	}
 
@@ -70,10 +70,10 @@ public class ViewAddEditAlunoController {
 	private boolean isInputValid() {
 		String errorMessage = "";
 		if (nomeField.getText() == null || nomeField.getText().length() == 0) {
-			errorMessage += "Nome é obrigatoria!\n";
+			errorMessage += "Nome ï¿½ obrigatoria!\n";
 		}
 		if (cpfField.getLength() < 11) {
-			errorMessage += "CPF inválido!\n";
+			errorMessage += "CPF invï¿½lido!\n";
 		}
 
 		if (errorMessage.length() == 0) {
@@ -81,8 +81,8 @@ public class ViewAddEditAlunoController {
 		} else {
 			// Mostra a mensagem de erro.
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Campos Inválidos");
-			alert.setHeaderText("Por favor, corrija os campos inválidos");
+			alert.setTitle("Campos Invï¿½lidos");
+			alert.setHeaderText("Por favor, corrija os campos invï¿½lidos");
 			alert.setContentText(errorMessage);
 			alert.showAndWait();
 
