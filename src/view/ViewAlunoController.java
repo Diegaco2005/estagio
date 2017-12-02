@@ -30,11 +30,11 @@ public class ViewAlunoController {
 	private void initialize(){}
 	@FXML
 	private void handleNovoAluno() throws SQLException{
-		Aluno aluno = new Aluno();
-		Boolean okClicked = mainApp.showAddEditAlunoDialog(aluno);
+		Aluno alunoTmp = new Aluno();
+		Boolean okClicked = mainApp.showAddEditAlunoDialog(alunoTmp);
 		if(okClicked){
 			AlunoDao alunodao = new AlunoDao();
-			alunodao.adiciona(aluno);
+			//alunodao.adiciona(aluno);
 		}
 	}
 	@FXML

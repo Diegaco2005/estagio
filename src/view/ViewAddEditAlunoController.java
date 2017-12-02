@@ -49,7 +49,7 @@ public class ViewAddEditAlunoController {
 				"Masculinho", "Feminino");
 		sexoBox.getItems().addAll(sexo);
 		ObservableList<String> curso = FXCollections.observableArrayList(
-				"Analise e desenvolvimento", "Economia");
+				"Análise e Desenvolvimento de Sistemas", "Economia");
 		cursoBox.getItems().addAll(curso);
 	}
 
