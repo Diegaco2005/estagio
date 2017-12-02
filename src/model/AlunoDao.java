@@ -22,7 +22,7 @@ public class AlunoDao {
 			stmt.setString(1, aluno.getCpf());
 			stmt.setString(2, aluno.getNome());
 			stmt.setString(3, aluno.getCurso());
-			stmt.setBoolean(4, aluno.getSexo());
+			stmt.setString(4, aluno.getSexo());
 			stmt.setString(5, aluno.getImagem());
 			stmt.setString(6, aluno.getEmail());
 
@@ -41,7 +41,7 @@ public class AlunoDao {
 			stmt.setString(1, aluno.getCpf());
 			stmt.setString(2, aluno.getNome());
 			stmt.setString(3, aluno.getCurso());
-			stmt.setBoolean(4, aluno.getSexo());
+			stmt.setString(4, aluno.getSexo());
 			stmt.setString(5, aluno.getImagem());
 			stmt.setString(6, aluno.getEmail());
 			stmt.setInt(7, aluno.getId());

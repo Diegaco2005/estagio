@@ -1,9 +1,12 @@
 package view;
 
+import java.sql.SQLException;
+
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import main.MainApp;
 import model.Aluno;
+import model.AlunoDao;
 
 public class ViewAlunoController {
 	private Stage dialogStage;
@@ -26,11 +29,12 @@ public class ViewAlunoController {
 	@FXML
 	private void initialize(){}
 	@FXML
-	private void handleNovoAluno(){
+	private void handleNovoAluno() throws SQLException{
 		Aluno aluno = new Aluno();
 		Boolean okClicked = mainApp.showAddEditAlunoDialog(aluno);
 		if(okClicked){
-			//lalal
+			AlunoDao alunodao = new AlunoDao();
+			alunodao.adiciona(aluno);
 		}
 	}
 	@FXML

@@ -82,7 +82,7 @@ public class MainApp extends Application {
             ViewAlunoController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setMainApp(this);
-            //controller.setAluno(aluno);
+
 
             // Mostra a janela e espera até o usuário fechar.
             dialogStage.showAndWait();
@@ -112,8 +112,7 @@ public class MainApp extends Application {
             // Define a pessoa no controller.
             ViewAddEditAlunoController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-
-            //controller.setAluno(aluno);
+            controller.setAluno(aluno);
 
             // Mostra a janela e espera até o usuário fechar.
             dialogStage.showAndWait();

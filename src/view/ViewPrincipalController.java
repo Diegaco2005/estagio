@@ -20,7 +20,6 @@ public class ViewPrincipalController {
     }
 	@FXML
 	private void handleAlunoMenuItem(){
-		System.out.println("test");
-		 boolean okClicked = mainApp.showViewAlunoDialog();
+		boolean okClicked = mainApp.showViewAlunoDialog();
 	}
 }

@@ -24,7 +24,7 @@ public class Aluno {
     private String cpf;
     private String nome;
     private String curso;
-    private Boolean sexo;
+    private String sexo;
     private String imagem;
     private String email;
     private String caio4;
@@ -88,14 +88,14 @@ public class Aluno {
     /**
      * @return the sexo
      */
-    public Boolean getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
     /**
      * @param sexo the sexo to set
      */
-    public void setSexo(Boolean sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
