@@ -22,4 +22,8 @@ public class ViewAddEditAlunoController {
 	public void initialize(){
 
 	}
+	@FXML
+	private void handleOk(){
+		
+	}
 }

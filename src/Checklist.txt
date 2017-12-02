@@ -1,8 +1,11 @@
  ---- Model ----
 
 *aluno
+alunodao
 *empresa
+empresadao
 *estagio
+estagiodao
 
 
 ----   telas   ------
