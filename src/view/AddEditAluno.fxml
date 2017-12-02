@@ -10,7 +10,6 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="296.0" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ViewAddEditAlunoController">
   <children>
     <Label layoutX="34.0" layoutY="54.0" text="Nome" />
-<<<<<<< HEAD
     <Label layoutX="39.0" layoutY="94.0" text="CPF" />
     <Label layoutX="37.0" layoutY="125.0" text="Sexo" />
     <Label layoutX="34.0" layoutY="153.0" text="Curso" />
@@ -23,7 +22,6 @@
     <ComboBox id="cbSexo" fx:id="sexoBox" editable="false" layoutX="110.0" layoutY="123.0" prefWidth="150.0" promptText="Masculino" />
     <ComboBox id="cbCurso" fx:id="cursoBox" editable="false" layoutX="110.0" layoutY="151.0" prefWidth="150.0" />
     <Button layoutX="199.0" layoutY="253.0" mnemonicParsing="false" onAction="#handleOk" text="Ok" />
-=======
     <TextField layoutX="110.0" layoutY="51.0" />
     <Label layoutX="39.0" layoutY="94.0" text="CPF" />
     <TextField layoutX="110.0" layoutY="90.0" />
@@ -37,6 +35,5 @@
     <ImageView fitHeight="111.0" fitWidth="150.0" layoutX="110.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
     <Button layoutX="148.0" layoutY="351.0" mnemonicParsing="false" text="Ok" />
       <Button layoutX="198.0" layoutY="351.0" mnemonicParsing="false" text="Cancelar" />
->>>>>>> branch 'master' of https://github.com/Diegaco2005/estagio
   </children>
 </AnchorPane>
