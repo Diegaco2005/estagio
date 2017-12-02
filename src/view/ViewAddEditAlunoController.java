@@ -26,7 +26,7 @@ public class ViewAddEditAlunoController {
 	private boolean okClicked = false;
 	private Aluno aluno;
 	public ViewAddEditAlunoController(){
-
+		//a
 
 
 	}
