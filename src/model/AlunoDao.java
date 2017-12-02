@@ -18,18 +18,17 @@ public class AlunoDao {
 			this.connection = ConnectionFactory.getConnectionFactory();
 		}
 		public void adiciona(Aluno aluno) throws SQLException{
-			PreparedStatement stmt = this.connection.prepareStatement("insert into aluno(cpf)values(?)", Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1, aluno.getCpf());
 
 
-			/*PreparedStatement stmt = this.connection.prepareStatement("insert into aluno(cpf, nome, curso, sexo, imagem, email)values(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+
+			PreparedStatement stmt = this.connection.prepareStatement("insert into aluno(cpf, nome, curso, sexo, imagem, email)values(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, aluno.getCpf());
 			stmt.setString(2, aluno.getNome());
 			stmt.setString(3, aluno.getCurso());
 			stmt.setString(4, aluno.getSexo());
 			stmt.setString(5, aluno.getImagem());
 			stmt.setString(6, aluno.getEmail());
-             */
+
 
 			stmt.execute();
 			ResultSet rs = stmt.getGeneratedKeys();
