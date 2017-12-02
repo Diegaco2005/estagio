@@ -1,5 +1,7 @@
 package view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -16,17 +18,21 @@ public class ViewAddEditAlunoController {
 	@FXML
 	private ComboBox sexoBox;
 	@FXML
-	private ComboBox cursoBox;
+	private ComboBox<String> cursoBox;
 	@FXML
 	private TextField emailField;
 
 	private Stage dialogStage;
 	private boolean okClicked = false;
 	private Aluno aluno;
+	public ViewAddEditAlunoController(){
 
+
+
+	}
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
-		//aa
+
 	}
 
 	public void setDialogStage(Stage dialogStage) {
@@ -39,7 +45,12 @@ public class ViewAddEditAlunoController {
 
 	@FXML
 	public void initialize() {
-		cursoBox.getItems().addAll("Masculino", "Feminino");
+		ObservableList<String> sexo = FXCollections.observableArrayList(
+				"Masculinho", "Feminino");
+		sexoBox.getItems().addAll(sexo);
+		ObservableList<String> curso = FXCollections.observableArrayList(
+				"Analise e desenvolvimento", "Economia");
+		cursoBox.getItems().addAll(curso);
 	}
 
 	@FXML

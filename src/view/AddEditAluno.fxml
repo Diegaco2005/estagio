@@ -22,8 +22,8 @@
     <TextField fx:id="cpfField" layoutX="110.0" layoutY="90.0" />
     <TextField fx:id="emailField" layoutX="110.0" layoutY="180.0" />
     <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="110.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
-    <ComboBox id="cbSexo" fx:id="sexoBox" layoutX="110.0" layoutY="123.0" prefWidth="150.0" />
-    <ComboBox id="cbCurso" fx:id="cursoBox" layoutX="110.0" layoutY="151.0" prefWidth="150.0" />
+    <ComboBox id="cbSexo" fx:id="sexoBox" editable="false" layoutX="110.0" layoutY="123.0" prefWidth="150.0" promptText="Masculino" />
+    <ComboBox id="cbCurso" fx:id="cursoBox" editable="false" layoutX="110.0" layoutY="151.0" prefWidth="150.0" />
     <Button layoutX="199.0" layoutY="253.0" mnemonicParsing="false" onAction="#handleOk" text="Ok" />
   </children>
 </AnchorPane>
