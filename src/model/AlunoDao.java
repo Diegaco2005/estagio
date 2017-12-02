@@ -17,11 +17,11 @@ public class AlunoDao {
 			this.connection = ConnectionFactory.getConnectionFactory();
 		}
 		public void adiciona(Aluno aluno) throws SQLException{
-			PreparedStatement stmt = this.connection.prepareStatement("insert into veiculo(placa, marca, modelo, cor)values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-			stmt.setString(1, veiculo.getPlaca());
-			stmt.setString(2, veiculo.getMarca());
-			stmt.setString(3, veiculo.getModelo());
-			stmt.setString(4, veiculo.getCor());
+			PreparedStatement stmt = this.connection.prepareStatement("insert into aluno(placa, marca, modelo, cor)values(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, aluno.getPlaca());
+			stmt.setString(2, aluno.getMarca());
+			stmt.setString(3, aluno.getModelo());
+			stmt.setString(4, aluno.getCor());
 
 			stmt.execute();
 			ResultSet rs = stmt.getGeneratedKeys();
