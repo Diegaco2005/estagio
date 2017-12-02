@@ -26,6 +26,7 @@ public class ViewAddEditAlunoController {
 
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
+		//aa
 	}
 
 	public void setDialogStage(Stage dialogStage) {
