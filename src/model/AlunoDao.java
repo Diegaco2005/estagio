@@ -26,7 +26,7 @@ public class AlunoDao {
 			stmt.execute();
 			ResultSet rs = stmt.getGeneratedKeys();
 		    rs.next();
-		    veiculo.setIdVeiculo(rs.getInt(1));
+		    aluno.setIdVeiculo(rs.getInt(1));
 
 
 			stmt.close();
