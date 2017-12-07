@@ -13,9 +13,15 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Aluno;
+import model.Empresa;
+import model.Estagio;
 import view.ViewPrincipalController;
 import view.ViewAddEditAlunoController;
+import view.ViewAddEditEmpresaController;
+import view.ViewAddEditEstagioController;
 import view.ViewAlunoController;
+import view.ViewEmpresaController;
+import view.ViewEstagioController;
 
 public class MainApp extends Application {
 
@@ -151,6 +157,37 @@ public class MainApp extends Application {
         }
     }
     
+    public boolean showAddEditEmpresaDialog(Empresa empresa) {
+        try {
+            // Carrega o arquivo fxml e cria um novo stage para a janela popup
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/view/AddEditEmpresa.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Cria o palco dialogStage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Cadastra Empresa");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Define a pessoa no controller.
+            ViewAddEditEmpresaController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setEmpresa(empresa);
+
+            // Mostra a janela e espera at� o usu�rio fechar.
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
     public boolean showViewEstagioDialog() {
         try {
             // Carrega o arquivo fxml e cria um novo stage para a janela popup
@@ -170,6 +207,37 @@ public class MainApp extends Application {
             ViewAlunoController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setMainApp(this);
+
+            // Mostra a janela e espera at� o usu�rio fechar.
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean showAddEditEstagioDialog(Estagio estagio) {
+        try {
+            // Carrega o arquivo fxml e cria um novo stage para a janela popup
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/view/AddEditEstagio.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Cria o palco dialogStage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Cadastra Estagio");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Define a pessoa no controller.
+            ViewAddEditEstagioController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setEstagio(estagio);
 
             // Mostra a janela e espera at� o usu�rio fechar.
             dialogStage.showAndWait();

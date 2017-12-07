@@ -17,7 +17,7 @@ public class ViewEstagioController {
 	public void setMainApp(MainApp mainApp){
 		this.mainApp = mainApp;
 	}
-	public void setAluno(Estagio estagio){
+	public void setEstagio(Estagio estagio){
 		this.estagio = estagio;
 	}
 	public void setDialogStage(Stage dialogStage){
