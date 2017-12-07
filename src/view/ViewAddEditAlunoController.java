@@ -57,8 +57,9 @@ public class ViewAddEditAlunoController {
 			aluno.setNome(nomeField.getText());
 			aluno.setCpf(cpfField.getText());
 			aluno.setEmail(emailField.getText());
-			// aluno.setSexo(sexoBox.getValue().toString());
-			// aluno.setCurso(cursoBox.getValue().toString());
+			aluno.setSexo("Masculino"); //sexoBox.getValue().toString());
+			aluno.setCurso("Análise e Desenvolvimento de Sistemas"); //cursoBox.getValue().toString());
+                        aluno.setImagem("não informada");
 
 			okClicked = true;
 			dialogStage.close();
@@ -68,19 +69,28 @@ public class ViewAddEditAlunoController {
 	private boolean isInputValid() {
 		String errorMessage = "";
 		if (nomeField.getText() == null || nomeField.getText().length() == 0) {
-			errorMessage += "Nome � obrigatoria!\n";
+			errorMessage += "Nome é obrigatorio!\n";
 		}
 		if (cpfField.getLength() < 11) {
-			errorMessage += "CPF inv�lido!\n";
+			errorMessage += "CPF inválido!\n";
 		}
+                /*if (sexoBox.getValue().toString() != "Masculino" || sexoBox.getValue().toString() != "Feminino"){
+                    errorMessage += "Sexo inválido!\n";
+                }*/
+                /*if(cursoBox.toString().length() < 5){
+                    errorMessage += "O curso deve ser selecionado!\n";
+                }*/
+                if(emailField.getText() == null || emailField.getText().length() < 7){
+                    errorMessage += "Digite um email válido!\n";
+                }
 
 		if (errorMessage.length() == 0) {
 			return true;
 		} else {
 			// Mostra a mensagem de erro.
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Campos Inv�lidos");
-			alert.setHeaderText("Por favor, corrija os campos inv�lidos");
+			alert.setTitle("Campos Inválidos");
+			alert.setHeaderText("Por favor, corrija os campos inválidos:");
 			alert.setContentText(errorMessage);
 			alert.showAndWait();
 
