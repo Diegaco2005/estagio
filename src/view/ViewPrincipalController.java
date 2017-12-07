@@ -22,4 +22,14 @@ public class ViewPrincipalController {
 	private void handleAlunoMenuItem(){
 		boolean okClicked = mainApp.showViewAlunoDialog();
 	}
+        
+        @FXML
+	private void handleEmpresaMenuItem(){
+		boolean okClicked = mainApp.showViewEmpresaDialog();
+	}
+        
+        @FXML
+	private void handleEstagioMenuItem(){
+		boolean okClicked = mainApp.showViewEstagioDialog();
+	}
 }

@@ -15,6 +15,8 @@
             <Menu mnemonicParsing="false" text="File">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#handleAlunoMenuItem" text="Aluno" />
+                <MenuItem mnemonicParsing="false" onAction="#handleEmpresaMenuItem" text="Empresa" />
+                <MenuItem mnemonicParsing="false" onAction="#handleEstagioMenuItem" text="Estágio" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
