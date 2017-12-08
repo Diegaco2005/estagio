@@ -16,9 +16,9 @@ import model.Aluno;
 import model.Empresa;
 import model.Estagio;
 import view.ViewPrincipalController;
-import view.ViewAddEditAlunoController;
-import view.ViewAddEditEmpresaController;
-import view.ViewAddEditEstagioController;
+import view.AddEditAlunoController;
+import view.AddEditEmpresaController;
+import view.AddEditEstagioController;
 import view.ViewAlunoController;
 import view.ViewEmpresaController;
 import view.ViewEstagioController;
@@ -95,7 +95,7 @@ public class MainApp extends Application {
         }
     }
 
-    public boolean showAddEditAlunoDialog(Aluno aluno) {
+    public boolean showAddAlunoDialog(Aluno aluno) {
         try {
             // Carrega o arquivo fxml e cria um novo stage para a janela popup
             FXMLLoader loader = new FXMLLoader();
@@ -111,7 +111,7 @@ public class MainApp extends Application {
             dialogStage.setScene(scene);
 
             // Define a pessoa no controller.
-            ViewAddEditAlunoController controller = loader.getController();
+            AddEditAlunoController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setAluno(aluno);
 
@@ -124,6 +124,41 @@ public class MainApp extends Application {
             e.printStackTrace();
             return false;
         }
+        
+        
+    }
+    public boolean showEditAlunoDialog(Aluno aluno) {
+        try {
+            // Carrega o arquivo fxml e cria um novo stage para a janela popup
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/view/AddEditAluno.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Cria o palco dialogStage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Cadastra Aluno");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Define a pessoa no controller.
+            AddEditAlunoController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setAluno(aluno);
+            controller.preecheForm();
+
+            // Mostra a janela e espera at� o usu�rio fechar.
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        
+        
     }
 
     public boolean showViewEmpresaDialog() {
@@ -173,7 +208,7 @@ public class MainApp extends Application {
             dialogStage.setScene(scene);
 
             // Define a pessoa no controller.
-            ViewAddEditEmpresaController controller = loader.getController();
+            AddEditEmpresaController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setEmpresa(empresa);
 
@@ -235,7 +270,7 @@ public class MainApp extends Application {
             dialogStage.setScene(scene);
 
             // Define a pessoa no controller.
-            ViewAddEditEstagioController controller = loader.getController();
+            AddEditEstagioController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setEstagio(estagio);
 

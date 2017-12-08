@@ -8,20 +8,19 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
-import model.Empresa;
+import model.Estagio;
 
-public class ViewAddEditEmpresaController {
-
+public class AddEditEstagioController {
     private Stage dialogStage;
     private boolean okClicked = false;
-    private Empresa empresa;
+    private Estagio estagio;
 
-    public ViewAddEditEmpresaController() {
+    public AddEditEstagioController() {
 
     }
 
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
+    public void setEstagio(Estagio estagio) {
+        this.estagio = estagio;
 
     }
 

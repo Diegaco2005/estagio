@@ -45,7 +45,8 @@ public class AlunoDao {
         stmt.close();
     }
     public void edita(Aluno aluno) throws SQLException {
-        PreparedStatement stmt = this.connection.prepareStatement("update aluno SET cpf=?, nome=?, cursoe=?, sexoe=?, imageme=?, email=? where id = ?");
+        System.out.println(aluno.getNome()+" - "+ aluno.getId());
+        PreparedStatement stmt = this.connection.prepareStatement("update aluno SET cpf=?, nome=?, curso=?, sexo=?, imagem=?, email=? where id = ?");
 
         stmt.setString(1, aluno.getCpf());
         stmt.setString(2, aluno.getNome());
@@ -54,7 +55,7 @@ public class AlunoDao {
         stmt.setString(5, aluno.getImagem());
         stmt.setString(6, aluno.getEmail());
         stmt.setInt(7, aluno.getId());
-        //System.out.println(stmt.toString());
+        System.out.println(stmt.toString());
         stmt.execute();
         stmt.close();
     }
@@ -64,6 +65,7 @@ public class AlunoDao {
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             Aluno alunoTmp = new Aluno();
+            alunoTmp.setId(rs.getInt("id"));
             alunoTmp.setNome(rs.getString("nome"));
             alunoTmp.setCpf(rs.getString("cpf"));
             alunoTmp.setCurso(rs.getString("curso"));

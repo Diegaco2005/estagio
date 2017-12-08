@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,6 +19,7 @@ public class ViewAlunoController{
 	private Stage dialogStage;
 	private MainApp mainApp;
 	private boolean okClicked = false;
+        
 	private Aluno aluno;
         
         
@@ -78,7 +80,7 @@ public class ViewAlunoController{
 	@FXML
 	private void handleNovoAluno() throws SQLException{
             Aluno alunoTmp = new Aluno();
-            Boolean okClicked = mainApp.showAddEditAlunoDialog(alunoTmp);
+            Boolean okClicked = mainApp.showAddAlunoDialog(alunoTmp);
             if(okClicked){
                 AlunoDao alunodao = new AlunoDao();
                 alunodao.adiciona(alunoTmp);
@@ -86,8 +88,24 @@ public class ViewAlunoController{
             }
 	}
 	@FXML
-	private void handleEditaAluno(){
-
+	private void handleEditaAluno() throws SQLException{
+           Aluno alunoSelected = this.tabelaAlunos.getSelectionModel().getSelectedItem();
+           if(alunoSelected != null){
+               Boolean okClicked = mainApp.showEditAlunoDialog(alunoSelected);
+                if(okClicked){
+                    AlunoDao alunodao = new AlunoDao();
+                    alunodao.edita(alunoSelected);
+                    atualizaTable();
+                }
+           }else{
+                // Mostra a mensagem de erro.
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Nenhum aluno selecionado");
+                alert.setContentText("Por favor, Selecione um ALUNO para editar");
+                alert.showAndWait();
+                        
+           }
+           
 	}
 	@FXML
 	private void handleDeletaAluno(){

@@ -28,10 +28,10 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
-import static jdk.nashorn.internal.objects.NativeRegExp.source;
 
 
-public class ViewAddEditAlunoController {
+
+public class AddEditAlunoController {
 	@FXML
 	private TextField nomeField;
 	@FXML
@@ -48,18 +48,44 @@ public class ViewAddEditAlunoController {
 
 	private Stage dialogStage;
 	private boolean okClicked = false;
+        private boolean imgAlterada = false;
 	private Aluno aluno;
         private Path from;
         private Path to;
         
         
-	public ViewAddEditAlunoController(){
+	public AddEditAlunoController(){
             
 	}
+        
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
 
 	}
+        
+        public void preecheForm(){
+            nomeField.setText(this.aluno.getNome());
+            cpfField.setText(this.aluno.getCpf());
+            sexoBox.setValue(this.aluno.getSexo());
+            cursoBox.setValue(this.aluno.getCurso());
+            emailField.setText(this.aluno.getEmail());
+            System.out.println("upload/"+this.aluno.getImagem());
+            File selectedFile = null;
+            if(this.aluno.getImagem() != null){
+                selectedFile = new File("upload/"+this.aluno.getImagem());
+            }
+            if (selectedFile != null) {
+                try {
+                    BufferedImage bufferedImage = ImageIO.read(selectedFile);
+                    Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+                    this.imgView.setImage(image);
+                }catch (IOException ex) {
+                    ex.printStackTrace();
+
+                }
+            }
+                    
+        }
 
 	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
@@ -72,30 +98,49 @@ public class ViewAddEditAlunoController {
 	@FXML
 	public void initialize() {
 		ObservableList<String> sexo = FXCollections.observableArrayList(
-				"Masculino", "Feminino");
+				"Male", "Female");
 		sexoBox.getItems().addAll(sexo);
+                sexoBox.setValue("Male");
 		ObservableList<String> curso = FXCollections.observableArrayList(
-				"Analise e Desenvolvimento de Sistemas", "Economia");
+				"Analise e Desenvolvimento de Sistemas", "Direito", "Medicina");
 		cursoBox.getItems().addAll(curso);
+                cursoBox.setValue("Analise e Desenvolvimento de Sistemas");
 	}
 
 	@FXML
 	private void handleOk() {
             if (isInputValid()) {
+               
                 aluno.setNome(nomeField.getText());
                 aluno.setCpf(cpfField.getText());
                 aluno.setEmail(emailField.getText());
-                aluno.setSexo("Masculino"); //sexoBox.getValue().toString());
-                aluno.setCurso("Análise e Desenvolvimento de Sistemas"); //cursoBox.getValue().toString());
-                try {
-                    aluno.setImagem(copiaRenomeiaImg());
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }           
+                
+                aluno.setSexo(sexoBox.getValue().toString()); //sexoBox.getValue().toString());
+                aluno.setCurso(cursoBox.getValue().toString()); //cursoBox.getValue().toString());
+                if(imgAlterada){
+                    try {
+                        String nomeImg = copiaRenomeiaImg();
+                        if(nomeImg != null){
+                             aluno.setImagem(nomeImg);
+                        }else{
+                            aluno.setImagem("default.jpg");
+                        }
+
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }           
+
+                }
+                
                 okClicked = true;
                 dialogStage.close();
             }
 	}
+        @FXML
+        private void handleCancel(){
+        
+            dialogStage.close();
+        }
         @FXML
         private void handleImg() {
             
@@ -115,7 +160,7 @@ public class ViewAddEditAlunoController {
                 
                 from = Paths.get(selectedFile.toURI());
                 to = Paths.get("upload/" + selectedFile.getName());            
-                    
+                imgAlterada = true;    
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -128,12 +173,15 @@ public class ViewAddEditAlunoController {
             return now.format(formatter)+".jpg";   
         }
         private String copiaRenomeiaImg() throws IOException{
-            String nomeArquivo = geraNomeImg();
-            Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
-            File copyFile = to.toFile();            
-            Files.move(to, to.resolveSibling(nomeArquivo));
-            return nomeArquivo;
-        
+            if(from != null){
+                String nomeArquivo = geraNomeImg();
+                Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
+                File copyFile = to.toFile();            
+                Files.move(to, to.resolveSibling(nomeArquivo));
+                return nomeArquivo;
+            
+            }
+            return null;       
         }
 	private boolean isInputValid() {
 		String errorMessage = "";
