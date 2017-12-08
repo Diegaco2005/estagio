@@ -21,7 +21,7 @@ public class Empresa {
     private String nome;
     private String logo;
     private String cidade;
-    private Boolean pais;
+    private String pais;
     private String endereco;
 
     /**
@@ -83,14 +83,14 @@ public class Empresa {
     /**
      * @return the pais
      */
-    public Boolean getPais() {
+    public String getPais() {
         return pais;
     }
 
     /**
      * @param pais the pais to set
      */
-    public void setPais(Boolean pais) {
+    public void setPais(String pais) {
         this.pais = pais;
     }
 
