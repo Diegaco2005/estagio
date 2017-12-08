@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `aluno`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aluno` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL UNIQUE auto_increment,
   `cpf` varchar(11) NOT NULL,
   `nome` varchar(100) DEFAULT NULL,
   `curso` varchar(45) DEFAULT NULL,
@@ -52,7 +52,7 @@ DROP TABLE IF EXISTS `empresa`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `empresa` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL UNIQUE auto_increment,
   `nome` varchar(100) NOT NULL,
   `logo` varchar(100) DEFAULT NULL,
   `cidade` varchar(50) DEFAULT NULL,

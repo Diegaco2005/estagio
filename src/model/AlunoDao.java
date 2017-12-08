@@ -10,6 +10,8 @@ import java.sql.Statement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import Util.ConnectionFactory;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AlunoDao {
 
@@ -42,7 +44,6 @@ public class AlunoDao {
 
         stmt.close();
     }
-
     public void edita(Aluno aluno) throws SQLException {
         PreparedStatement stmt = this.connection.prepareStatement("update aluno SET cpf=?, nome=?, cursoe=?, sexoe=?, imageme=?, email=? where id = ?");
 
@@ -56,6 +57,23 @@ public class AlunoDao {
         //System.out.println(stmt.toString());
         stmt.execute();
         stmt.close();
+    }
+    public ObservableList<Aluno> getAll() throws SQLException{
+        ObservableList<Aluno> alunos = FXCollections.observableArrayList();
+        PreparedStatement stmt = this.connection.prepareStatement("select id, cpf, nome, curso, sexo, imagem, email FROM aluno");
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            Aluno alunoTmp = new Aluno();
+            alunoTmp.setNome(rs.getString("nome"));
+            alunoTmp.setCpf(rs.getString("cpf"));
+            alunoTmp.setCurso(rs.getString("curso"));
+            alunoTmp.setSexo(rs.getString("sexo"));
+            alunoTmp.setImagem(rs.getString("imagem"));
+            alunoTmp.setEmail(rs.getString("email"));
+            alunos.add(alunoTmp);
+       }
+       rs.close();
+       return alunos;
     }
 
 }

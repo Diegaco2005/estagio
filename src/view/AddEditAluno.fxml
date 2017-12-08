@@ -22,7 +22,7 @@
     <TextField fx:id="nomeField" layoutX="110.0" layoutY="51.0" />
     <TextField fx:id="cpfField" layoutX="110.0" layoutY="90.0" />
     <TextField fx:id="emailField" layoutX="110.0" layoutY="180.0" />
-    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="110.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
+    <ImageView fx:id="imgView" fitHeight="150.0" fitWidth="200.0" layoutX="110.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
     <ComboBox id="cbSexo" fx:id="sexoBox" editable="false" layoutX="110.0" layoutY="123.0" prefWidth="150.0" promptText="Masculino" />
     <ComboBox id="cbCurso" fx:id="cursoBox" editable="false" layoutX="110.0" layoutY="151.0" prefWidth="150.0" />
     <Label layoutX="39.0" layoutY="94.0" text="CPF" />
@@ -32,5 +32,6 @@
     <Label layoutX="33.0" layoutY="213.0" text="Avatar" />
     <Button layoutX="149.0" layoutY="351.0" mnemonicParsing="false" onAction="#handleOk" text="Ok" />
     <Button layoutX="198.0" layoutY="351.0" mnemonicParsing="false" text="Cancelar" />
+    <Button layoutX="22.0" layoutY="244.0" mnemonicParsing="false" onAction="#handleImg" text="Select.." />
   </children>
 </AnchorPane>
