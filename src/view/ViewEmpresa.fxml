@@ -4,18 +4,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane minHeight="350.0" minWidth="350.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="view.ViewEmpresaController">
   <!-- TODO Add Nodes -->
   <children>
-    <TableView layoutX="14.0" layoutY="136.0" prefHeight="200.0" prefWidth="322.0">
-      <columns>
-        <TableColumn prefWidth="75.0" text="Column X" />
-        <TableColumn prefWidth="75.0" text="Column X" />
-      </columns>
-    </TableView>
+    <TableView layoutX="14.0" layoutY="136.0" prefHeight="200.0" prefWidth="322.0" />
     <Button layoutX="24.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleNovoEmpresa" text="Novo" />
     <Button layoutX="84.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleEditaEmpresa" text="Edita" />
     <Button layoutX="147.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleDeletaEmpresa" text="Deleta" />
+    <Label layoutX="24.0" layoutY="21.0" text="Empresas">
+      <font>
+        <Font name="System Bold" size="22.0" />
+      </font>
+    </Label>
   </children>
 </AnchorPane>

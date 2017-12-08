@@ -7,11 +7,27 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Empresa;
 
 public class AddEditEmpresaController {
-
+    @FXML
+    private TextField nomeField;
+    @FXML
+    private TextField enderecoField;
+    @FXML
+    private ComboBox cidadeBox;
+    @FXML
+    private ComboBox paisBox;
+    @FXML
+    private ImageView imgView;
+    
+    
+            
+            
+            
+            
     private Stage dialogStage;
     private boolean okClicked = false;
     private Empresa empresa;
@@ -35,7 +51,14 @@ public class AddEditEmpresaController {
 
     @FXML
     public void initialize() {
-        //TODO: combos
+        ObservableList<String> cidade = FXCollections.observableArrayList(
+				"Farroupilha", "João Pessoa");
+        cidadeBox.getItems().addAll(cidade);
+        cidadeBox.setValue("Farroupilha");
+        ObservableList<String> pais = FXCollections.observableArrayList(
+                        "Brasil", "Mexico", "outro");
+        paisBox.getItems().addAll(pais);
+        paisBox.setValue("Brasil");
     }
 
     @FXML
@@ -47,6 +70,10 @@ public class AddEditEmpresaController {
             okClicked = true;
             dialogStage.close();
         }
+    }
+    @FXML
+    private void handleCancel() {
+       dialogStage.close();
     }
 
     private boolean isInputValid() {

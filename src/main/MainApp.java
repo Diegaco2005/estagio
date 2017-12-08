@@ -177,7 +177,7 @@ public class MainApp extends Application {
             dialogStage.setScene(scene);
 
             // Define a pessoa no controller.
-            ViewAlunoController controller = loader.getController();
+            ViewEmpresaController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setMainApp(this);
 

@@ -8,28 +8,28 @@ public class ViewPrincipalController {
 
 
 
-	 // Reference to the main application.
+    // Reference to the main application.
     private MainApp mainApp;
 
-	@FXML
+    @FXML
     private void initialize(){}
 	public ViewPrincipalController(){}
 	public void setMainApp(MainApp mainApp) {
 		System.out.println(mainApp.getClass());
         this.mainApp = mainApp;
     }
-	@FXML
-	private void handleAlunoMenuItem(){
-		boolean okClicked = mainApp.showViewAlunoDialog();
-	}
-        
-        @FXML
-	private void handleEmpresaMenuItem(){
-		boolean okClicked = mainApp.showViewEmpresaDialog();
-	}
-        
-        @FXML
-	private void handleEstagioMenuItem(){
-		boolean okClicked = mainApp.showViewEstagioDialog();
-	}
+    @FXML
+    private void handleAlunoMenuItem(){
+        boolean okClicked = mainApp.showViewAlunoDialog();
+    }
+
+    @FXML
+    private void handleEmpresaMenuItem(){
+        boolean okClicked = mainApp.showViewEmpresaDialog();
+    }
+
+    @FXML
+    private void handleEstagioMenuItem(){
+            boolean okClicked = mainApp.showViewEstagioDialog();
+    }
 }
