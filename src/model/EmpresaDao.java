@@ -49,7 +49,7 @@ public class EmpresaDao {
         stmt.execute();
         stmt.close();
     }
-     public ObservableList<Empresa> getAll() throws SQLException{
+    public ObservableList<Empresa> getAll() throws SQLException{
         ObservableList<Empresa> empresas = FXCollections.observableArrayList();
         PreparedStatement stmt = this.connection.prepareStatement("select id, nome, logo, cidade, pais, endereco FROM empresa");
         ResultSet rs = stmt.executeQuery();
