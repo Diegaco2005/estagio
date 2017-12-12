@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="300.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="view.ViewPrincipalController">
+<AnchorPane prefHeight="418.0" prefWidth="581.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="view.ViewPrincipalController">
   <!-- TODO Add Nodes -->
   <children>
     <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -17,6 +19,7 @@
                 <MenuItem mnemonicParsing="false" onAction="#handleAlunoMenuItem" text="Aluno" />
                 <MenuItem mnemonicParsing="false" onAction="#handleEmpresaMenuItem" text="Empresa" />
                 <MenuItem mnemonicParsing="false" onAction="#handleEstagioMenuItem" text="Estágio" />
+                <MenuItem mnemonicParsing="false" onAction="#handleGraficoMenuItem" text="Grafico" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">

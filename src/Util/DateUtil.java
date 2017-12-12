@@ -13,7 +13,7 @@ import java.time.format.DateTimeParseException;
 public class DateUtil {
 
     /** O padr�o usado para convers�o. Mude como quiser. */
-    private static final String DATE_PATTERN = "dd/MM/yyyy HH:mm:ss.S";
+    private static final String DATE_PATTERN = "dd/MM/yyyy";
 
     /** O formatador de data. */
     private static final DateTimeFormatter DATE_FORMATTER =
@@ -26,7 +26,7 @@ public class DateUtil {
      * @param date A data a ser retornada como String
      * @return String formadado
      */
-    public static String format(LocalDateTime date) {
+    public static String format(LocalDate date) {
         if (date == null) {
             return null;
         }

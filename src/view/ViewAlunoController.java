@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import main.MainApp;
 import model.Aluno;
 import model.AlunoDao;
+import model.Empresa;
+import model.EmpresaDao;
 
 public class ViewAlunoController{
 	private Stage dialogStage;
@@ -107,8 +109,19 @@ public class ViewAlunoController{
            
 	}
 	@FXML
-	private void handleDeletaAluno(){
-
+	private void handleDeletaAluno() throws SQLException{
+            Aluno alunoSelected = this.tabelaAlunos.getSelectionModel().getSelectedItem();
+            if (alunoSelected != null) {
+                AlunoDao alunodao = new AlunoDao();
+                alunodao.deleta(alunoSelected);
+                atualizaTable();
+            } else {
+                // Mostra a mensagem de erro.
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Nenhum aluno selecionado");
+                alert.setContentText("Por favor, Selecione um ALUNO na tabela de alunos para deletar");
+                alert.showAndWait();
+            }
 	}
         
         /*

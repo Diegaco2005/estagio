@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import Util.LabeledPieChart?>
+
+
+
+<AnchorPane minHeight="350.0" minWidth="350.0" prefWidth="539.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="view.viewGraficoController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <LabeledPieChart id="PieChart" fx:id="graficoPizza" layoutX="25.0" layoutY="45.0" />
+    <ComboBox fx:id="cursoBox" layoutX="234.0" layoutY="25.0" onAction="#handleComboBox" />
+  </children>
+</AnchorPane>

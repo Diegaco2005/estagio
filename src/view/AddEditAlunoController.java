@@ -96,14 +96,14 @@ public class AddEditAlunoController {
 
 	@FXML
 	public void initialize() {
-		ObservableList<String> sexo = FXCollections.observableArrayList(
-				"Male", "Female");
-		sexoBox.getItems().addAll(sexo);
-                sexoBox.setValue("Male");
-		ObservableList<String> curso = FXCollections.observableArrayList(
-				"Analise e Desenvolvimento de Sistemas", "Direito", "Medicina");
-		cursoBox.getItems().addAll(curso);
-                cursoBox.setValue("Analise e Desenvolvimento de Sistemas");
+            ObservableList<String> sexo = FXCollections.observableArrayList(
+                            "Male", "Female");
+            sexoBox.getItems().addAll(sexo);
+            sexoBox.setValue("Male");
+            ObservableList<String> curso = FXCollections.observableArrayList(
+                            "Analise e Desenvolvimento de Sistemas", "Direito", "Medicina");
+            cursoBox.getItems().addAll(curso);
+            cursoBox.setValue("Analise e Desenvolvimento de Sistemas");
 	}
 
 	@FXML
@@ -187,7 +187,7 @@ public class AddEditAlunoController {
 		if (nomeField.getText() == null || nomeField.getText().length() == 0) {
 			errorMessage += "Nome é obrigatorio!\n";
 		}
-		if (cpfField.getLength() < 11) {
+		if (cpfField.getLength() !=  11) {
 			errorMessage += "CPF inválido!\n";
 		}
                 /*if (sexoBox.getValue().toString() != "Masculino" || sexoBox.getValue().toString() != "Feminino"){

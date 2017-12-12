@@ -24,7 +24,7 @@
     <Label layoutX="24.0" layoutY="80.0" text="Data inicio" />
     <Label layoutX="310.0" layoutY="83.0" text="Data final" />
     <Button layoutX="458.0" layoutY="396.0" mnemonicParsing="false" onAction="#handleOk" text="Enviar" />
-    <Label layoutX="39.0" layoutY="27.0" text="Cadastro estágios">
+    <Label fx:id="labelTitle" layoutX="39.0" layoutY="27.0" text="Cadastro estágios">
       <font>
         <Font size="18.0" />
       </font>

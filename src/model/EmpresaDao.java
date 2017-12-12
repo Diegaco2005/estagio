@@ -34,7 +34,6 @@ public class EmpresaDao {
 
         stmt.close();
     }
-
     public void edita(Empresa empresa) throws SQLException {
         PreparedStatement stmt = this.connection.prepareStatement("update empresa SET nome=?, logo=?, cidade=?, pais=?, endereco=? where id = ?");
 
@@ -48,6 +47,15 @@ public class EmpresaDao {
         //System.out.println(stmt.toString());
         stmt.execute();
         stmt.close();
+    }
+    public void deleta(Empresa empresa) throws SQLException{
+        PreparedStatement stmt = this.connection.prepareStatement("delete from empresa where id = ?");    
+        stmt.setInt(1, empresa.getId());
+
+        //System.out.println(stmt.toString());
+        stmt.execute();
+        stmt.close();
+    
     }
     public ObservableList<Empresa> getAll() throws SQLException{
         ObservableList<Empresa> empresas = FXCollections.observableArrayList();

@@ -59,6 +59,15 @@ public class AlunoDao {
         stmt.execute();
         stmt.close();
     }
+    public void deleta(Aluno aluno) throws SQLException{
+        PreparedStatement stmt = this.connection.prepareStatement("delete from aluno where id = ?");    
+        stmt.setInt(1, aluno.getId());
+
+        //System.out.println(stmt.toString());
+        stmt.execute();
+        stmt.close();
+    
+    }
     public ObservableList<Aluno> getAll() throws SQLException{
         ObservableList<Aluno> alunos = FXCollections.observableArrayList();
         PreparedStatement stmt = this.connection.prepareStatement("select id, cpf, nome, curso, sexo, imagem, email FROM aluno");
@@ -77,5 +86,17 @@ public class AlunoDao {
        rs.close();
        return alunos;
     }
+    public ObservableList<String> getCursos() throws SQLException{
+         ObservableList<String> cursos = FXCollections.observableArrayList();
+        PreparedStatement stmt = this.connection.prepareStatement("select curso from aluno group by curso;");
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            cursos.add(rs.getString("curso"));
+           // System.out.print(rs.getString("curso"));
+       }
+       rs.close();
+       return cursos;
+    }
+    
 
 }

@@ -3,6 +3,7 @@ package view;
 import Util.DateUtil;
 import Util.MaskTextField;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -30,6 +32,8 @@ public class AddEditEstagioController {
     @FXML
     private TableColumn<Aluno, String> nomeCol;
     @FXML
+    private TableColumn<Aluno, String> cursoCol;
+    @FXML
     private TableColumn<Aluno, String> sexoCol;
     @FXML
     private TableColumn<Aluno, String> emailCol;
@@ -48,6 +52,9 @@ public class AddEditEstagioController {
     private MaskTextField datainicioTx;
     @FXML
     private MaskTextField datafinalTx;
+    @FXML
+    private Label labelTitle;
+    private boolean editBoolean = false;
 
     public AddEditEstagioController() {
 
@@ -57,7 +64,10 @@ public class AddEditEstagioController {
 
         nomeCol = new TableColumn("Nome");
         nomeCol.setCellValueFactory(
-            new PropertyValueFactory<>("nome"));          
+            new PropertyValueFactory<>("nome")); 
+        cursoCol = new TableColumn("Curso");
+        cursoCol.setCellValueFactory( 
+            new PropertyValueFactory<>("curso")); 
         sexoCol = new TableColumn("Sexo");
         sexoCol.setCellValueFactory(
             new PropertyValueFactory<>("sexo"));               
@@ -66,7 +76,7 @@ public class AddEditEstagioController {
             new PropertyValueFactory<>("email"));          
 
 
-        this.tabelaAlunos.getColumns().addAll(nomeCol, sexoCol, emailCol);
+        this.tabelaAlunos.getColumns().addAll(nomeCol, cursoCol, sexoCol, emailCol);
 
         try {
             AlunoDao alunodao = new AlunoDao();
@@ -102,6 +112,29 @@ public class AddEditEstagioController {
 
     }
     public void preecheForm(){
+        this.labelTitle.setText("Edita estagio");
+        
+        ObservableList<Empresa> empresas = FXCollections.observableArrayList();
+        empresas.addAll(tabelaEmpresas.getItems());
+                    
+        for(Empresa empresa : empresas){            
+            if(empresa.getId() != this.estagio.getEmpresa().getId()){
+                tabelaEmpresas.getItems().remove(empresa);
+            }
+        }
+        ObservableList<Aluno> alunos = FXCollections.observableArrayList();
+        alunos.addAll(tabelaAlunos.getItems());
+                    
+        for(Aluno aluno : alunos){          
+            if(aluno.getId() != this.estagio.getAluno().getId()){
+                tabelaAlunos.getItems().remove(aluno);
+            }
+        }
+        datainicioTx.setText(DateUtil.format(estagio.getDataInicio()));
+        if(estagio.getDataFinal() != null && !estagio.getDataFinal().toString().equals("1000-01-01")){
+            datafinalTx.setText(DateUtil.format(estagio.getDataFinal()));
+        }
+            
         
     }    
 
@@ -117,7 +150,9 @@ public class AddEditEstagioController {
     public boolean isOkClicked() {
         return okClicked;
     }
-
+    public void setEditBoolean(Boolean edit){
+        this.editBoolean = edit;
+    }
     @FXML
     public void initialize() {
         datainicioTx.setMask("NN/NN/NNNN");
@@ -128,9 +163,11 @@ public class AddEditEstagioController {
     @FXML
     private void handleOk() {
         if (isInputValid()) {
+            if(!editBoolean){
+                estagio.setAluno(tabelaAlunos.getSelectionModel().getSelectedItem());
+                estagio.setEmpresa(tabelaEmpresas.getSelectionModel().getSelectedItem());
+            }
             
-            estagio.setAluno(tabelaAlunos.getSelectionModel().getSelectedItem());
-            estagio.setEmpresa(tabelaEmpresas.getSelectionModel().getSelectedItem());
             
             estagio.setDataInicio(DateUtil.parseBr(datainicioTx.getText()));
             if(!datafinalTx.getText().equals("")){
@@ -140,12 +177,27 @@ public class AddEditEstagioController {
             dialogStage.close();
         }
     }
-
+    
     private boolean isInputValid() {
         String errorMessage = "";
+        if(datainicioTx.getText().trim().equals("")){
+            errorMessage += "Data de inicio é obrigatorio!\n";
+        }else if(!datafinalTx.getText().trim().equals("")){
+            if(DateUtil.parse(datainicioTx.getText()).compareTo(DateUtil.parse(datafinalTx.getText())) == 1){
+                errorMessage += "Data final nao pode ser menor que a data inicial!\n";       
+            }      
+        }
         
-        //TODO: validar campos
-        
+        if(!editBoolean){  
+            Aluno alunoSelected = this.tabelaAlunos.getSelectionModel().getSelectedItem();
+            if(alunoSelected == null){
+               errorMessage += "Seleciione um aluno na tabela de alunos!\n"; 
+            }
+            Empresa empresaSelected = this.tabelaEmpresas.getSelectionModel().getSelectedItem();
+            if(empresaSelected == null){
+                errorMessage += "Seleciione uma empresa na tabela de empresas!\n"; 
+            }
+        }
         if (errorMessage.length() == 0) {
             return true;
         } else {

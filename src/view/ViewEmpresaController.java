@@ -14,6 +14,8 @@ import model.Aluno;
 import model.AlunoDao;
 import model.Empresa;
 import model.EmpresaDao;
+import model.Estagio;
+import model.EstagioDao;
 
 public class ViewEmpresaController {
 	private Stage dialogStage;
@@ -44,7 +46,7 @@ public class ViewEmpresaController {
                 new PropertyValueFactory<>("pais"));          
             
             
-             this.tabelaEmpresas.getColumns().addAll(nomeCol, cidadeCol, paisCol);
+            this.tabelaEmpresas.getColumns().addAll(nomeCol, cidadeCol, paisCol);
             
             try {
                 EmpresaDao empresadao = new EmpresaDao();
@@ -53,8 +55,6 @@ public class ViewEmpresaController {
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
-           
-
         }
 	@FXML
 	private void initialize(){
@@ -65,9 +65,9 @@ public class ViewEmpresaController {
             Empresa empresaTmp = new Empresa();
             Boolean okClicked = mainApp.showAddEmpresaDialog(empresaTmp);
             if(okClicked){
-                    EmpresaDao empresadao = new EmpresaDao();
-                    empresadao.adiciona(empresaTmp);
-                    atualizaTable();
+                EmpresaDao empresadao = new EmpresaDao();
+                empresadao.adiciona(empresaTmp);
+                atualizaTable();
             }
 	}
 	@FXML
@@ -90,8 +90,19 @@ public class ViewEmpresaController {
             }
         }
 	@FXML
-	private void handleDeletaEmpresa(){
-
+	private void handleDeletaEmpresa() throws SQLException{
+            Empresa empresaSelected = this.tabelaEmpresas.getSelectionModel().getSelectedItem();
+            if (empresaSelected != null) {
+                EmpresaDao empresadao = new EmpresaDao();
+                empresadao.deleta(empresaSelected);
+                atualizaTable();
+            } else {
+                // Mostra a mensagem de erro.
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Nenhuma empresa selecionado");
+                alert.setContentText("Por favor, Selecione uma EMPRESA na tabela de empresas para deletar");
+                alert.showAndWait();
+            }
 	}
         
         public void setMainApp(MainApp mainApp){

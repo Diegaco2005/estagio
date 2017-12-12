@@ -22,6 +22,7 @@ import view.AddEditEstagioController;
 import view.ViewAlunoController;
 import view.ViewEmpresaController;
 import view.ViewEstagioController;
+import view.viewGraficoController;
 
 public class MainApp extends Application {
 
@@ -53,17 +54,24 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("/view/ViewPrincipal.fxml"));
             AnchorPane principalView = (AnchorPane) loader.load();
-
+            
+            
+            
+            ViewPrincipalController controller = loader.getController();
+            
+            controller.setMainApp(this);
             // Define o person overview dentro do root layout.
             rootLayout.setCenter(principalView);
 
-            ViewPrincipalController controller = loader.getController();
-            controller.setMainApp(this);
+           
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    
+    
     public boolean showViewAlunoDialog() {
         try {
             // Carrega o arquivo fxml e cria um novo stage para a janela popup
@@ -94,7 +102,6 @@ public class MainApp extends Application {
             return false;
         }
     }
-
     public boolean showAddAlunoDialog(Aluno aluno) {
         try {
             // Carrega o arquivo fxml e cria um novo stage para a janela popup
@@ -160,7 +167,8 @@ public class MainApp extends Application {
         
         
     }
-
+   
+    
     public boolean showViewEmpresaDialog() {
         try {
             // Carrega o arquivo fxml e cria um novo stage para a janela popup
@@ -190,8 +198,7 @@ public class MainApp extends Application {
             e.printStackTrace();
             return false;
         }
-    }
-    
+    } 
     public boolean showAddEmpresaDialog(Empresa empresa) {
         try {
             // Carrega o arquivo fxml e cria um novo stage para a janela popup
@@ -254,6 +261,7 @@ public class MainApp extends Application {
         }
     }
     
+    
     public boolean showViewEstagioDialog() {
         try {
             // Carrega o arquivo fxml e cria um novo stage para a janela popup
@@ -284,8 +292,7 @@ public class MainApp extends Application {
             e.printStackTrace();
             return false;
         }
-    }
-    
+    }  
     public boolean showAddEstagioDialog(Estagio estagio) {
         try {
             // Carrega o arquivo fxml e cria um novo stage para a janela popup
@@ -336,6 +343,7 @@ public class MainApp extends Application {
             controller.setDialogStage(dialogStage);
             controller.setEstagio(estagio);
             controller.preecheForm();
+            controller.setEditBoolean(true);
 
             // Mostra a janela e espera at� o usu�rio fechar.
             dialogStage.showAndWait();
@@ -347,6 +355,38 @@ public class MainApp extends Application {
             return false;
         }
     }
+    
+    public void showViewGraficoDialog() {
+        try {
+            // Carrega o arquivo fxml e cria um novo stage para a janela popup
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/view/ViewGrafico.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Cria o palco dialogStage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Grafico Estágio");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Define a pessoa no controller.
+            viewGraficoController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setMainApp(this);
+            
+
+            // Mostra a janela e espera at� o usu�rio fechar.
+            dialogStage.showAndWait();
+
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+           
+        }
+    }  
+    
     
     /**
      * Retorna o palco principal.
