@@ -18,8 +18,7 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
  
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javafx.embed.swing.SwingFXUtils;
 
 import javafx.scene.image.Image;
@@ -123,7 +122,7 @@ public class AddEditAlunoController {
                         if(nomeImg != null){
                              aluno.setImagem(nomeImg);
                         }else{
-                            aluno.setImagem("default.jpg");
+                            aluno.setImagem("defaultUser.jpg");
                         }
 
                     } catch (IOException ex) {

@@ -16,9 +16,13 @@ public class Estagio {
     private int id;
     private LocalDate dataInicio;
     private LocalDate dataFinal;
+    private String nomeAluno;
     private Aluno aluno;
+    private String nomeEmpresa;
     private Empresa empresa;
-
+    public Estagio(){
+        dataFinal = null;
+    }
     /**
      * @return the id
      */
@@ -87,6 +91,34 @@ public class Estagio {
      */
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    /**
+     * @return the nomeAluno
+     */
+    public String getNomeAluno() {
+        return nomeAluno;
+    }
+
+    /**
+     * @param nomeAluno the nomeAluno to set
+     */
+    public void setNomeAluno(String nomeAluno) {
+        this.nomeAluno = nomeAluno;
+    }
+
+    /**
+     * @return the nomeEmpresa
+     */
+    public String getNomeEmpresa() {
+        return nomeEmpresa;
+    }
+
+    /**
+     * @param nomeEmpresa the nomeEmpresa to set
+     */
+    public void setNomeEmpresa(String nomeEmpresa) {
+        this.nomeEmpresa = nomeEmpresa;
     }
     
 }

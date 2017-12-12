@@ -192,7 +192,7 @@ public class MainApp extends Application {
         }
     }
     
-    public boolean showAddEditEmpresaDialog(Empresa empresa) {
+    public boolean showAddEmpresaDialog(Empresa empresa) {
         try {
             // Carrega o arquivo fxml e cria um novo stage para a janela popup
             FXMLLoader loader = new FXMLLoader();
@@ -222,6 +222,37 @@ public class MainApp extends Application {
             return false;
         }
     }
+    public boolean showEditEmpresaDialog(Empresa empresa) {
+        try {
+            // Carrega o arquivo fxml e cria um novo stage para a janela popup
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/view/AddEditEmpresa.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Cria o palco dialogStage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edita Empresa");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Define a pessoa no controller.
+            AddEditEmpresaController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setEmpresa(empresa);
+            controller.preecheForm();
+            
+            // Mostra a janela e espera at� o usu�rio fechar.
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
     
     public boolean showViewEstagioDialog() {
         try {
@@ -239,9 +270,10 @@ public class MainApp extends Application {
             dialogStage.setScene(scene);
 
             // Define a pessoa no controller.
-            ViewAlunoController controller = loader.getController();
+            ViewEstagioController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setMainApp(this);
+            
 
             // Mostra a janela e espera at� o usu�rio fechar.
             dialogStage.showAndWait();
@@ -254,7 +286,7 @@ public class MainApp extends Application {
         }
     }
     
-    public boolean showAddEditEstagioDialog(Estagio estagio) {
+    public boolean showAddEstagioDialog(Estagio estagio) {
         try {
             // Carrega o arquivo fxml e cria um novo stage para a janela popup
             FXMLLoader loader = new FXMLLoader();
@@ -273,6 +305,37 @@ public class MainApp extends Application {
             AddEditEstagioController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setEstagio(estagio);
+
+            // Mostra a janela e espera at� o usu�rio fechar.
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean showEditEstagioDialog(Estagio estagio) {
+        try {
+            // Carrega o arquivo fxml e cria um novo stage para a janela popup
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/view/AddEditEstagio.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Cria o palco dialogStage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Cadastra Estagio");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Define a pessoa no controller.
+            AddEditEstagioController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setEstagio(estagio);
+            controller.preecheForm();
 
             // Mostra a janela e espera at� o usu�rio fechar.
             dialogStage.showAndWait();

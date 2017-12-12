@@ -32,9 +32,14 @@ public class DateUtil {
         }
         return DATE_FORMATTER.format(date);
     }
-    public static LocalDateTime parseToSql(String date){
-    	DateTimeFormatter formatterNew = DateTimeFormatter.ofPattern("yyyy-LL-dd HH:mm:ss.S");
-    	return LocalDateTime.parse(date, formatterNew);
+    public static LocalDate parseToSql(String date){
+    	DateTimeFormatter formatterNew = DateTimeFormatter.ofPattern("yyyy-LL-dd");
+    	return LocalDate.parse(date, formatterNew);
+
+    }
+    public static LocalDate parseBr(String date){
+    	DateTimeFormatter formatterNew = DateTimeFormatter.ofPattern("dd/LL/yyyy");
+    	return LocalDate.parse(date, formatterNew);
 
     }
 

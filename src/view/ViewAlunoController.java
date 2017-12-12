@@ -18,8 +18,7 @@ import model.AlunoDao;
 public class ViewAlunoController{
 	private Stage dialogStage;
 	private MainApp mainApp;
-	private boolean okClicked = false;
-        
+	private boolean okClicked = false;        
 	private Aluno aluno;
         
         
