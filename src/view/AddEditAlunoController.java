@@ -1,5 +1,6 @@
 package view;
 
+import Util.ValidaCPF;
 import java.awt.image.BufferedImage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +18,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javafx.embed.swing.SwingFXUtils;
 
@@ -68,8 +71,9 @@ public class AddEditAlunoController {
         File selectedFile = null;
         if (this.aluno.getImagem() != null) {
             selectedFile = new File("upload/" + this.aluno.getImagem());
+        } else {
+            selectedFile = new File("upload/defaultUser.jpg");
         }
-        else selectedFile = new File("upload/defaultUser.jpg");
         if (selectedFile != null) {
             try {
                 BufferedImage bufferedImage = ImageIO.read(selectedFile);
@@ -189,18 +193,23 @@ public class AddEditAlunoController {
         if (nomeField.getText() == null || nomeField.getText().length() == 0) {
             errorMessage += "Nome é obrigatorio!\n";
         }
-        if (cpfField.getLength() != 11) {
+        if (!ValidaCPF.isValidCPF(cpfField.getText())) /*if (cpfField.getLength() != 11) {*/ {
             errorMessage += "CPF inválido!\n";
         }
+
         /*if (sexoBox.getValue().toString() != "Masculino" || sexoBox.getValue().toString() != "Feminino"){
                     errorMessage += "Sexo inválido!\n";
                 }*/
  /*if(cursoBox.toString().length() < 5){
                     errorMessage += "O curso deve ser selecionado!\n";
                 }*/
-        if (emailField.getText() == null || emailField.getText().length() < 7) {
-            errorMessage += "Digite um email válido!\n";
-        }
+        //if (emailField.getText() == null || emailField.getText().length() < 7) {
+            Pattern p = Pattern.compile(".+@.+\\.[a-z]+");
+            Matcher m = p.matcher(emailField.getText());
+            if (!m.matches()) {
+                errorMessage += "Digite um email válido!\n";
+            }
+        //}
 
         if (errorMessage.length() == 0) {
             return true;
