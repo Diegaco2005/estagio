@@ -65,6 +65,7 @@ public class AddEditEmpresaController {
         if(this.empresa.getLogo() != null){
             selectedFile = new File("upload/"+this.empresa.getLogo());
         }
+        else selectedFile = new File("upload/defaultEmpresa.jpg");
         if (selectedFile != null) {
             try {
                 BufferedImage bufferedImage = ImageIO.read(selectedFile);
@@ -89,7 +90,7 @@ public class AddEditEmpresaController {
     @FXML
     public void initialize() {
         ObservableList<String> cidade = FXCollections.observableArrayList(
-                "Farroupilha", "João Pessoa");
+                "Farroupilha", "Caxias do Sul", "Porto Alegre");
         cidadeBox.getItems().addAll(cidade);
         cidadeBox.setValue("Farroupilha");
         ObservableList<String> pais = FXCollections.observableArrayList(

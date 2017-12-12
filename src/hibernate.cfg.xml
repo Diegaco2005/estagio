@@ -43,7 +43,7 @@ Contributor(s):
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://192.168.2.19:3306/Diego?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.url">jdbc:mysql://200.132.7.1:1080/Diego?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">Diego</property>
     <property name="hibernate.connection.password">Diego</property>
   </session-factory>
