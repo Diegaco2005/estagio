@@ -112,7 +112,7 @@ public class AddEditEstagioController {
 
     }
     public void preecheForm(){
-        this.labelTitle.setText("Edita estagio");
+        this.labelTitle.setText("Edita Estágio");
         
         ObservableList<Empresa> empresas = FXCollections.observableArrayList();
         empresas.addAll(tabelaEmpresas.getItems());
@@ -131,9 +131,10 @@ public class AddEditEstagioController {
             }
         }
         datainicioTx.setText(DateUtil.format(estagio.getDataInicio()));
-        if(estagio.getDataFinal() != null && !estagio.getDataFinal().toString().equals("1000-01-01")){
+        if(estagio.getDataFinal() != null && !estagio.getDataFinal().equals(estagio.getDataInicio())){
             datafinalTx.setText(DateUtil.format(estagio.getDataFinal()));
         }
+        else datafinalTx.setText("");
             
         
     }    
@@ -184,18 +185,18 @@ public class AddEditEstagioController {
             errorMessage += "Data de inicio é obrigatorio!\n";
         }else if(!datafinalTx.getText().trim().equals("")){
             if(DateUtil.parse(datainicioTx.getText()).compareTo(DateUtil.parse(datafinalTx.getText())) == 1){
-                errorMessage += "Data final nao pode ser menor que a data inicial!\n";       
+                errorMessage += "Data final não pode ser menor que a data inicial!\n";       
             }      
         }
         
         if(!editBoolean){  
             Aluno alunoSelected = this.tabelaAlunos.getSelectionModel().getSelectedItem();
             if(alunoSelected == null){
-               errorMessage += "Seleciione um aluno na tabela de alunos!\n"; 
+               errorMessage += "Selecione um aluno na tabela de alunos!\n"; 
             }
             Empresa empresaSelected = this.tabelaEmpresas.getSelectionModel().getSelectedItem();
             if(empresaSelected == null){
-                errorMessage += "Seleciione uma empresa na tabela de empresas!\n"; 
+                errorMessage += "Selecione uma empresa na tabela de empresas!\n"; 
             }
         }
         if (errorMessage.length() == 0) {

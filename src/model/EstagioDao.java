@@ -29,7 +29,8 @@ public class EstagioDao {
         if (estagio.getDataFinal() != null) {
             stmt.setString(4, estagio.getDataFinal().toString());
         } else {
-            stmt.setString(4, "1000-01-01");
+            stmt.setString(4, estagio.getDataInicio().toString());
+            //stmt.setString(4, "1000-01-01");
         }
         stmt.execute();
 
@@ -45,7 +46,8 @@ public class EstagioDao {
         if (estagio.getDataFinal() != null) {
             stmt.setString(4, estagio.getDataFinal().toString());
         } else {
-            stmt.setString(4, "1000-01-01");
+            stmt.setString(4, estagio.getDataInicio().toString());
+            //stmt.setString(4, "1000-01-01");
         }
         stmt.setInt(5, estagio.getAluno().getId());
         stmt.setInt(6, estagio.getEmpresa().getId());
@@ -96,21 +98,22 @@ public class EstagioDao {
 
     public ObservableList<PieChart.Data> getGrafico(String curso) throws SQLException {
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-        PreparedStatement stmt = this.connection.prepareStatement("SELECT count(*) AS quant FROM ads_estagio.estagio INNER JOIN aluno on (aluno.id = estagio.aluno) WHERE data_fim = '1000-01-01' AND aluno.curso=?");
+        PreparedStatement stmt = this.connection.prepareStatement("SELECT count(*) AS quant FROM estagio INNER JOIN aluno on (aluno.id = estagio.aluno) WHERE (data_fim > CURDATE() OR data_fim = data_inicio) AND aluno.curso=?");
         stmt.setString(1, curso);
         ResultSet rs = stmt.executeQuery();
         if (rs.next()) {
-            pieChartData.add(new PieChart.Data("Estagio em andamento", rs.getInt("quant")));
+            pieChartData.add(new PieChart.Data("Estágio em andamento", rs.getInt("quant")));
         }else{
-            pieChartData.add(new PieChart.Data("Estagio em andamento", 0));
+            pieChartData.add(new PieChart.Data("Estágio em andamento", 0));
         }
-        stmt = this.connection.prepareStatement("SELECT count(*) AS quant FROM ads_estagio.estagio INNER JOIN aluno on (aluno.id = estagio.aluno) WHERE data_fim != '1000-01-01' AND aluno.curso=?");
+        //stmt = this.connection.prepareStatement("SELECT count(*) AS quant FROM estagio INNER JOIN aluno on (aluno.id = estagio.aluno) WHERE data_fim != '1000-01-01' AND aluno.curso=?");
+        stmt = this.connection.prepareStatement("SELECT count(*) AS quant FROM estagio INNER JOIN aluno on (aluno.id = estagio.aluno) WHERE data_fim < CURDATE() AND data_fim != data_inicio AND aluno.curso=?");
         stmt.setString(1, curso);
         rs = stmt.executeQuery();
         if (rs.next()) {
-            pieChartData.add(new PieChart.Data("Estagio finalizado", rs.getInt("quant")));
+            pieChartData.add(new PieChart.Data("Estágio finalizado", rs.getInt("quant")));
         }else{
-            pieChartData.add(new PieChart.Data("Estagio finalizado", 0));
+            pieChartData.add(new PieChart.Data("Estágio finalizado", 0));
         }
         rs.close();
         rs.close();

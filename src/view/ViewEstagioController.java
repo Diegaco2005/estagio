@@ -125,8 +125,8 @@ public class ViewEstagioController {
         } else {
             // Mostra a mensagem de erro.
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Nenhum estagio selecionado");
-            alert.setContentText("Por favor, Selecione um ESTAGIO na tabela de estagios para editar");
+            alert.setTitle("Nenhum estágio selecionado");
+            alert.setContentText("Por favor, Selecione um ESTÁGIO na tabela de estágios para editar");
             alert.showAndWait();
 
         }
@@ -145,8 +145,8 @@ public class ViewEstagioController {
         } else {
             // Mostra a mensagem de erro.
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Nenhum estagio selecionado");
-            alert.setContentText("Por favor, Selecione um ESTAGIO na tabela de estagios para deletar");
+            alert.setTitle("Nenhum estágio selecionado");
+            alert.setContentText("Por favor, Selecione um ESTÁGIO na tabela de estágios para deletar");
             alert.showAndWait();
 
         }
