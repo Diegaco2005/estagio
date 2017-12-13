@@ -8,8 +8,8 @@ public class ConnectionFactory {
 	{
 	   try{
 		Class.forName("com.mysql.jdbc.Driver");
-		return DriverManager.getConnection("jdbc:mysql://200.132.7.1:1080/Diego", "Diego", "Diego");
-		//return DriverManager.getConnection("jdbc:mysql://localhost/ads_estagio", "root", "7578");
+		//return DriverManager.getConnection("jdbc:mysql://200.132.7.1:1080/Diego", "Diego", "Diego");
+		return DriverManager.getConnection("jdbc:mysql://localhost/ads_estagio", "root", "7578");
 		//return DriverManager.getConnection("jdbc:mysql://localhost/ads_estacionamento", "root", "7578");
 	   }
 	   catch(ClassNotFoundException e)
